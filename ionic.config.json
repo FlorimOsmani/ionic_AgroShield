@@ -1,0 +1,7 @@
+{
+  "name": "AgroShield",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
