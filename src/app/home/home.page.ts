@@ -15,7 +15,7 @@ export class HomePage implements OnInit {
   userEmail: string = '';
   isLoading: boolean = true;
 
-  constructor(private router: Router) { }
+  constructor() { }
 
   ngOnInit() {
     // Get the tokens from localStorage

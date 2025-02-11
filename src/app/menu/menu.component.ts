@@ -1,22 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, MenuController } from '@ionic/angular';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '@auth0/auth0-angular';
-import { Capacitor } from '@capacitor/core';
-import { environment } from 'src/environments/environment';
-import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
   standalone: true,
-  imports: [CommonModule, IonicModule, RouterLink],
+  imports: [CommonModule, IonicModule],
 })
 export class MenuComponent {
 
-  constructor(public auth: AuthService, private router: Router) { }
+  constructor(public auth: AuthService, private router: Router, private menuCtrl: MenuController) { }
 
   async logout() {
     try {
@@ -31,5 +28,11 @@ export class MenuComponent {
     } catch (error) {
       console.error('Logout Error:', error);
     }
+  }
+
+  // Close menu on navigation
+  closeMenuAndNavigate(route: string) {
+    this.menuCtrl.close(); // Close the menu
+    this.router.navigate([route]); // Navigate to selected route
   }
 }

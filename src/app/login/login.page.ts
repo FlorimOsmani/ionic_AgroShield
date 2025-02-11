@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 import { Capacitor } from '@capacitor/core';
@@ -16,7 +16,7 @@ import axios from 'axios'; // Import axios for HTTP requests
   standalone: true,
   imports: [IonicModule, CommonModule, FormsModule],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
   auth0Client: any;
   loginError: string | null = null;
   email: string = '';
@@ -24,6 +24,17 @@ export class LoginPage {
 
   constructor(private router: Router) {
     this.initializeAuth0();
+  }
+
+  ngOnInit() {
+    // Check if the user's tokens are already stored in localStorage
+    const accessToken = localStorage.getItem('access_token');
+    const idToken = localStorage.getItem('id_token');
+
+    if (accessToken && idToken) {
+      // If tokens are found, navigate to the home page
+      this.router.navigate(['/home']);
+    }
   }
 
   async initializeAuth0() {

@@ -1,21 +1,19 @@
 import { Routes } from '@angular/router';
 import { HomePage } from './home/home.page';
 import { LoginPage } from './login/login.page';
-import { PerceelRegistrerenPage } from './perceel-registreren/perceel-registreren.page';
-// import { PercelenBeherenPage } from './percelen-beheren/percelen-beheren.page';
-// import { PercelenRaadplegenPage } from './percelen-raadplegen/percelen-raadplegen.page';
+import { PercelenBeherenComponent } from './percelen-beheren/percelen-beheren.component';
+import { PercelenRaadplegenComponent } from './percelen-raadplegen/percelen-raadplegen.component';
 // import { SchadeclaimOpstellenPage } from './schadeclaim-opstellen/schadeclaim-opstellen.page';
-// import { SchadeclaimsBeherenPage } from './schadeclaims-beheren/schadeclaims-beheren.page';
-// import { SchadeclaimRaadplegenPage } from './schadeclaim-raadplegen/schadeclaim-raadplegen.page';
+import { SchadeclaimsBeherenComponent } from './schadeclaims-beheren/schadeclaims-beheren.component';
+import { SchadeclaimsRaadplegenComponent } from './schadeclaims-raadplegen/schadeclaims-raadplegen.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginPage },
   { path: 'home', component: HomePage },
-  { path: 'perceel-registreren', component: PerceelRegistrerenPage },
-  // { path: 'percelen-beheren', component: PercelenBeherenPage },
-  // { path: 'percelen-raadplegen', component: PercelenRaadplegenPage },
+  { path: 'percelen-beheren', component: PercelenBeherenComponent },
+  { path: 'percelen-raadplegen', component: PercelenRaadplegenComponent },
   // { path: 'schadeclaim-opstellen', component: SchadeclaimOpstellenPage },
-  // { path: 'schadeclaims-beheren', component: SchadeclaimsBeherenPage },
-  // { path: 'schadeclaim-raadplegen', component: SchadeclaimRaadplegenPage },
+  { path: 'schadeclaims-beheren', component: SchadeclaimsBeherenComponent },
+  { path: 'schadeclaim-raadplegen', component: SchadeclaimsRaadplegenComponent },
 ];

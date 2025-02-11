@@ -1,20 +1,19 @@
 <ion-menu contentId="main-content">
-  <ion-header>
+  <ion-header class="pt-7">
     <ion-toolbar>
       <ion-title>Menu</ion-title>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item [routerLink]="['/home']">Home</ion-item>
-      <ion-item [routerLink]="['/perceel-registreren']">Perceel Registreren</ion-item>
-      <ion-item [routerLink]="['/percelen-beheren']">Percelen Beheren</ion-item>
-      <ion-item [routerLink]="['/percelen-raadplegen']">Percelen Raadplegen</ion-item>
-      <ion-item [routerLink]="['/schadeclaim-opstellen']">Schadeclaim Opstellen</ion-item>
-      <ion-item [routerLink]="['/schadeclaims-beheren']">Schadeclaims Beheren</ion-item>
-      <ion-item [routerLink]="['/schadeclaim-raadplegen']">Schadeclaim Raadplegen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/home')">Home</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/percelen-beheren')">Percelen Beheren</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/percelen-raadplegen')">Percelen Raadplegen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-opstellen')">Schadeclaim Opstellen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaims-beheren')">Schadeclaims Beheren</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-raadplegen')">Schadeclaim Raadplegen</ion-item>
     </ion-list>
-    <ion-button (click)="logout()">Logout</ion-button>
+    <ion-button (click)="logout()" class="text-white ml-2">Logout</ion-button>
   </ion-content>
 </ion-menu>
 

@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [translucent]="true" class="pt-7">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true" class="ion-padding rounded-md">
   <!-- Email Input -->
   <ion-item>
     <ion-label position="floating">Email</ion-label>
@@ -21,7 +21,7 @@
   </ion-item>
 
   <!-- Login Button -->
-  <ion-button expand="block" shape="round" color="success" (click)="login()">Login</ion-button>
+  <ion-button expand="block" color="success" (click)="login()" class="mt-5 rounded-md">Login</ion-button>
   
   <!-- Error Message -->
   <div *ngIf="loginError" class="error-message">

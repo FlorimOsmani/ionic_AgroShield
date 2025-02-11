@@ -1,0 +1,67 @@
+<ion-header class="pt-7">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Schadeclaims Beheren</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-refresher slot="fixed" [pullFactor]="0.5" [pullMin]="100" [pullMax]="200" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <!-- <p>{{ userEmail }}</p>
+  <p>{{ error }}</p>
+  <p>{{ debug }}</p> -->
+
+  @if (isLoading) {
+    <ion-spinner></ion-spinner>
+  } @else {
+    @if (schadeClaimsLijst.length === 0) {
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Geen schadeclaims gevonden.</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    } @else {
+      <ion-card *ngFor="let claim of schadeClaimsLijst as Schadeclaim; let i = index">
+        <ion-card-header>
+          <ion-card-title>Eigenaar: {{ claim.gebruikerEmail }}</ion-card-title>
+          <ion-card-subtitle>{{ claim.opmerking }}</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label>Datum:</ion-label>
+              <ion-text>{{ formatDate(claim.startDatum) }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Geschatte kost:</ion-label>
+              <ion-text>€ {{ claim.geschatteKost }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label>Type schade:</ion-label>
+              <ion-text>{{ claim.typeSchade }}</ion-text>
+            </ion-item>
+            <ion-item>
+              <ion-label><strong>Status:</strong></ion-label>
+              <ion-text><strong>{{ claim.status }}</strong></ion-text>
+            </ion-item>
+          </ion-list>
+
+          <div class="photo-upload">
+            <ion-button expand="full" (click)="takePicture(claim.id, claim.schadeDetails[0].perceelId)"
+            class="rounded-md text-white bg-blue-500">
+              Foto maken & Uploaden
+            </ion-button>
+      
+            <img *ngIf="selectedImage" [src]="selectedImage" class="image-preview" />
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    }
+  }
+</ion-content>
