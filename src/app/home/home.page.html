@@ -8,5 +8,13 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <h1>Welcome to AgroShield: {{ userEmail || 'No user logged in!' }}</h1>
+  <div class="text-center py-6">
+    <h1 class="text-2xl font-bold">Welcome to AgroShield</h1>
+    <p class="text-white">{{ userEmail || 'No user logged in!' }}</p>
+    <img src="assets/img/farm.jpg" alt="Farm fields" class="w-full max-h-52 object-cover rounded-lg mt-4" />
+    <p class="mt-4 text-lg text-white">
+      AgroShield helps farmers document land damage easily. Start a claim, collect data, and generate official reports
+      automatically.
+    </p>
+  </div>
 </ion-content>

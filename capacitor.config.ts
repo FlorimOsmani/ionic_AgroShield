@@ -8,6 +8,9 @@ const config: CapacitorConfig = {
     CapacitorHttp: {
       enabled: true,
     },
+    Http: {
+      allowInsecure: true // 🚨 Ignore SSL verification
+    },
     SplashScreen: {
       launchShowDuration: 2000,
       backgroundColor: '#de0f17',

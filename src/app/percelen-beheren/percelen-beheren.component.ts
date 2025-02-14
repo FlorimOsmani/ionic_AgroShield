@@ -70,7 +70,7 @@ export class PercelenBeherenComponent implements OnInit {
     this.isLoading = true;
     this.debug = "fetchPercelen() called, loading percelen...";
 
-    (await this.perceelService.getPercelenByEmail(this.userEmail)).subscribe({
+    (await this.perceelService.getPercelenByEmailHTTPS(this.userEmail)).subscribe({
       next: (percelen) => {
         this.debug = `Received percelen: ${JSON.stringify(percelen)}`;
         setTimeout(() => {

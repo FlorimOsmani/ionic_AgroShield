@@ -1,19 +1,23 @@
 <ion-menu contentId="main-content">
   <ion-header class="pt-7">
     <ion-toolbar>
-      <ion-title>Menu</ion-title>
+      <div class="flex flex-row justify-between">
+        <ion-img src="../../assets/logo_agroshield-no-bg.png" alt="agroshield logo"
+        class="w-14 h-auto order-first"></ion-img>
+        <ion-title>Menu</ion-title>
+      </div>
     </ion-toolbar>
   </ion-header>
   <ion-content>
     <ion-list>
-      <ion-item (click)="closeMenuAndNavigate('/home')">Home</ion-item>
-      <ion-item (click)="closeMenuAndNavigate('/percelen-beheren')">Percelen Beheren</ion-item>
-      <ion-item (click)="closeMenuAndNavigate('/percelen-raadplegen')">Percelen Raadplegen</ion-item>
-      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-opstellen')">Schadeclaim Opstellen</ion-item>
-      <ion-item (click)="closeMenuAndNavigate('/schadeclaims-beheren')">Schadeclaims Beheren</ion-item>
-      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-raadplegen')">Schadeclaim Raadplegen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/home')"><ion-icon name="home" class="mr-2"/>Home</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/percelen-beheren')"><ion-icon name="earth" class="mr-2"/>Percelen Beheren</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/percelen-raadplegen')"><ion-icon name="earth" class="mr-2"/>Percelen Raadplegen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-opstellen')"><ion-icon name="document-attach" class="mr-2"/>Schadeclaim Opstellen</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaims-beheren')"><ion-icon name="documents" class="mr-2"/>Schadeclaims Beheren</ion-item>
+      <ion-item (click)="closeMenuAndNavigate('/schadeclaim-raadplegen')"><ion-icon name="documents" class="mr-2"/>Schadeclaim Raadplegen</ion-item>
     </ion-list>
-    <ion-button (click)="logout()" class="text-white ml-2">Logout</ion-button>
+    <ion-button expand="block" (click)="logout()" class="text-white ml-2 mt-2"><ion-icon name="log-out-outline" class="mr-2"/>Logout</ion-button>
   </ion-content>
 </ion-menu>
 

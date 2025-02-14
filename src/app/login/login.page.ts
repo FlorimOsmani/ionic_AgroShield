@@ -22,6 +22,13 @@ export class LoginPage implements OnInit {
   email: string = '';
   password: string = '';
 
+  isAlertOpen = true;
+  alertButtons = ['Action'];
+
+  closeAlert() {
+    this.isAlertOpen = false;
+  }
+
   constructor(private router: Router) {
     this.initializeAuth0();
   }
@@ -71,6 +78,9 @@ export class LoginPage implements OnInit {
       const { access_token, id_token } = response.data;
       localStorage.setItem('access_token', access_token);
       localStorage.setItem('id_token', id_token);
+
+      this.email = '';
+      this.password = '';
 
       // Navigate to the home page
       this.router.navigate(['/home']);
