@@ -1,70 +1,41 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Schadeclaim } from './schadeclaim';
 import { Status } from './status';
+import { CapacitorHttp } from '@capacitor/core';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SchadeclaimService {
-  uri: string = "http://192.168.158.115:8000/";
+  uri: string = "http://34.195.35.188:8000/";
 
   constructor(private httpClient: HttpClient) { }
 
-  getSchadeclaims(): Observable<Schadeclaim[]> {
-    return this.httpClient.get<Schadeclaim[]>(this.uri + 'schadeclaims');
+  async getSchadeclaimByEmailCAP(email: string): Promise<Observable<Schadeclaim[]>> {
+    const url = `${this.uri}schadeclaims/email/${email}`;
+
+    const options = {
+      url: url,
+      params: { email: email }
+    }
+
+    const response = await CapacitorHttp.get(options);
+
+    return of(response.data as Schadeclaim[]);
   }
 
-  getSchadeclaimById(id: number): Observable<Schadeclaim> {
-    return this.httpClient.get<Schadeclaim>(this.uri + 'schadeclaims/' + id);
-  }
+  async getSchadeclaimByPerceelIdCAP(id: number): Promise<Observable<Schadeclaim>> {
+    const url = `${this.uri}schadeclaims/perceel/${id}`;
 
-  getSchadeclaimByStatus(status: Status): Observable<Schadeclaim> {
-    return this.httpClient.get<Schadeclaim>(
-      this.uri + 'schadeclaims/status/' + status
-    );
-  }
+    const options = {
+      url: url,
+      params: { id: id.toString() }
+    }
 
-  getSchadeclaimByEmail(email: string): Observable<Schadeclaim[]> {
-    return this.httpClient.get<Schadeclaim[]>(this.uri + "schadeclaims/email/" + email);
-  }
+    const response = await CapacitorHttp.get(options);
 
-  getSchadeclaimByPerceelId(id: number): Observable<Schadeclaim> {
-    return this.httpClient.get<Schadeclaim>(
-      this.uri + 'schadeclaims/perceel/' + id
-    );
-  }
-
-  getBewijsmateriaalBySchadeclaimId(id: string): Observable<any> {
-    return this.httpClient.get<any>(this.uri + 'schadeclaims/bewijsmateriaal/' + id);
-  }
-
-  putSchadeclaim(
-    id: string,
-    schadeclaim: Schadeclaim,
-    statusName: string
-  ): Observable<Schadeclaim> {
-    return this.httpClient.put<Schadeclaim>(
-      this.uri + 'schadelclaims/' + id,
-      schadeclaim
-    );
-  }
-
-  postSchadeclaim(schadeclaim: Schadeclaim): Observable<{ status_code: number; id: string }> {
-    return this.httpClient.post<{ status_code: number; id: string }>(
-      this.uri + 'schadeclaims/create',
-      schadeclaim
-    );
-  }
-
-  verstuurSchadeclaim(payload: { gemeente: string; startdatum: string, einddatum: string, gebruikerEmail: string, perceelId: number, coordinates: number[][][] }): Observable<any> {
-    return this.httpClient.post(this.uri + 'schadeclaims/bewijsmateriaal', payload);
-  }
-
-  deleteSchadeclaim(id: string): Observable<Schadeclaim> {
-    return this.httpClient.delete<Schadeclaim>(
-      this.uri + 'schadeclaims/delete/' + id
-    );
+    return of(response.data as Schadeclaim);
   }
 }

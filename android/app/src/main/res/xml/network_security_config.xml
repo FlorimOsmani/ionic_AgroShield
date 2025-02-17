@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
-        <domain includeSubdomains="true">3.210.11.226</domain>
+        <domain includeSubdomains="true">34.195.35.188</domain>
         <trust-anchors>
             <certificates src="system" />
             <certificates src="user" />

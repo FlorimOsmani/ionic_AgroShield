@@ -68,7 +68,7 @@ export class PercelenRaadplegenComponent implements OnInit {
     this.isLoading = true;
     this.debug = "fetchPercelen() called, loading percelen...";
 
-    await this.perceelService.getPercelen().subscribe((percelen) => {
+    await (await this.perceelService.getPercelenCAP()).subscribe((percelen) => {
       percelen.forEach(perceel => {
         if (perceel.toegevoegdeGebruikers.includes(this.userEmail)) {
           this.percelenLijst.push(perceel);

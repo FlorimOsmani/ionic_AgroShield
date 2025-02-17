@@ -75,7 +75,7 @@ export class SchadeclaimsRaadplegenComponent implements OnInit {
 
     this.isLoading = true;
 
-    this.perceelService.getPercelenByToegevoegdePersonen(this.userEmail).subscribe({
+    (await this.perceelService.getPercelenByToegevoegdePersonenCAP(this.userEmail)).subscribe({
       next: (percelen) => {
         console.log('Opgehaalde percelen:', percelen);
 
@@ -87,8 +87,8 @@ export class SchadeclaimsRaadplegenComponent implements OnInit {
 
         const schadeclaims: Schadeclaim[] = [];
         let remaining = percelen.length;
-        percelen.forEach((perceel) => {
-          this.schadeclaimService.getSchadeclaimByPerceelId(perceel.perceelDataId).subscribe({
+        percelen.forEach(async (perceel) => {
+          (await this.schadeclaimService.getSchadeclaimByPerceelIdCAP(perceel.perceelDataId)).subscribe({
             next: (schadeclaim) => {
               if (Array.isArray(schadeclaim)) {
                 schadeclaims.push(...schadeclaim);

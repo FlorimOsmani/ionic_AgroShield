@@ -77,7 +77,7 @@ export class SchadeclaimsBeherenComponent implements OnInit {
     this.isLoading = true;
     this.debug = "fetchSchadeclaims() called, loading schadeclaims...";
 
-    await this.schadeclaimService.getSchadeclaimByEmail(this.userEmail).subscribe((schadeclaims) => {
+    await (await this.schadeclaimService.getSchadeclaimByEmailCAP(this.userEmail)).subscribe((schadeclaims) => {
       schadeclaims.forEach((claim) => {
         this.schadeClaimsLijst.push(claim);
       });
