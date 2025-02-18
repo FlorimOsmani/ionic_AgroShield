@@ -25,8 +25,10 @@ export class MenuComponent {
 
       // Optionally, you can clear local session or data if needed
       this.router.navigate(['/login']); // Redirect to login page after logout
+      this.menuCtrl.close(); // Close the menu
     } catch (error) {
       console.error('Logout Error:', error);
+      this.menuCtrl.close(); // Close the menu
     }
   }
 

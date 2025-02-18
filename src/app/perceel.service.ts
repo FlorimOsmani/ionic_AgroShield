@@ -9,7 +9,8 @@ import { CapacitorHttp } from '@capacitor/core';
   providedIn: 'root'
 })
 export class PerceelService {
-  uri: string = "http://34.195.35.188:8000/";
+  //uri: string = "http://34.195.35.188:8000/";
+  uri: string = "https://agroshield.be:8000/";
 
   constructor() { }
 

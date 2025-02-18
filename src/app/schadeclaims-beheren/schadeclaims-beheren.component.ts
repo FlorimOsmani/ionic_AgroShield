@@ -92,7 +92,7 @@ export class SchadeclaimsBeherenComponent implements OnInit {
         quality: 90,
         allowEditing: false,
         resultType: CameraResultType.Base64,
-        source: CameraSource.Camera,
+        source: CameraSource.Prompt,
       });
 
       if (image.base64String) {
@@ -142,7 +142,7 @@ export class SchadeclaimsBeherenComponent implements OnInit {
   }
 
   async uploadImage(schadeClaimId: string, perceelDataId: number, base64String: string) {
-    const url = 'http://192.168.158.115:8000/fotos/create/';
+    const url = 'https://agroshield.be:8000/fotos/create/';
     const formData = new FormData();
 
     formData.append('schadeClaimId', schadeClaimId);
